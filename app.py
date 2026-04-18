@@ -68,12 +68,12 @@ def load_data():
     cols = [
         'short_name', 'age', 'height_cm', 'weight_kg', 'overall', 'potential',
         'preferred_foot', 'work_rate', 'player_positions',
-        'crossing', 'finishing', 'heading_accuracy', 'short_passing',
-        'volleys', 'dribbling', 'curve', 'fk_accuracy', 'long_passing',
-        'ball_control', 'acceleration', 'sprint_speed', 'agility', 'reactions',
-        'balance', 'shot_power', 'jumping', 'stamina', 'strength', 'long_shots',
-        'aggression', 'interceptions', 'positioning', 'vision', 'penalties',
-        'composure', 'marking', 'standing_tackle', 'sliding_tackle'
+        'attacking_crossing', 'attacking_finishing', 'attacking_heading_accuracy', 'attacking_short_passing',
+        'attacking_volleys', 'skill_dribbling', 'skill_curve', 'skill_fk_accuracy', 'skill_long_passing',
+        'skill_ball_control', 'movement_acceleration', 'movement_sprint_speed', 'movement_agility', 'movement_reactions',
+        'movement_balance', 'power_shot_power', 'power_jumping', 'power_stamina', 'power_strength', 'power_long_shots',
+        'mentality_aggression', 'mentality_interceptions', 'mentality_positioning', 'mentality_vision', 'mentality_penalties',
+        'mentality_composure', 'defending_marking', 'defending_standing_tackle', 'defending_sliding_tackle'
     ]
     df = df_raw.copy()
     existing_cols = [c for c in cols if c in df.columns]
@@ -175,12 +175,12 @@ elif app_mode == "🧠 Skills Clustering":
     n_clusters = st.sidebar.slider("Number of Clusters (K)", 2, 8, 4)
     
     # Prep data for clustering
-    skill_cols = ['crossing', 'finishing', 'heading_accuracy', 'short_passing',
-                  'volleys', 'dribbling', 'curve', 'fk_accuracy', 'long_passing',
-                  'ball_control', 'acceleration', 'sprint_speed', 'agility', 'reactions',
-                  'balance', 'shot_power', 'jumping', 'stamina', 'strength', 'long_shots',
-                  'aggression', 'interceptions', 'positioning', 'vision', 'penalties',
-                  'composure', 'marking', 'standing_tackle', 'sliding_tackle']
+    skill_cols = ['attacking_crossing', 'attacking_finishing', 'attacking_heading_accuracy', 'attacking_short_passing',
+                  'attacking_volleys', 'skill_dribbling', 'skill_curve', 'skill_fk_accuracy', 'skill_long_passing',
+                  'skill_ball_control', 'movement_acceleration', 'movement_sprint_speed', 'movement_agility', 'movement_reactions',
+                  'movement_balance', 'power_shot_power', 'power_jumping', 'power_stamina', 'power_strength', 'power_long_shots',
+                  'mentality_aggression', 'mentality_interceptions', 'mentality_positioning', 'mentality_vision', 'mentality_penalties',
+                  'mentality_composure', 'defending_marking', 'defending_standing_tackle', 'defending_sliding_tackle']
     
     # Ensure columns exist
     skill_cols = [c for c in skill_cols if c in df_processed.columns]
