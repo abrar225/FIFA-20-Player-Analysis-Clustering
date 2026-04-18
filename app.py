@@ -145,7 +145,7 @@ if app_mode == "🏠 Dashboard overview":
     # Top Players Matrix
     st.subheader("🌟 Top Players by Overall Rating")
     top_10 = df_raw.nlargest(10, 'overall')[['short_name', 'age', 'nationality', 'club', 'overall', 'wage_eur']]
-    st.dataframe(top_10, use_container_width=True)
+    st.dataframe(top_10, width='stretch')
 
 elif app_mode == "🔍 Player EDA & Clubs":
     st.markdown("<h1 class='title-gradient'>Exploratory Data Analysis</h1>", unsafe_allow_html=True)
@@ -161,7 +161,7 @@ elif app_mode == "🔍 Player EDA & Clubs":
                      color='Count', color_continuous_scale='Blues',
                      title="Global Player Distribution")
         fig.update_layout(yaxis={'categoryorder':'total ascending'}, template='plotly_dark')
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
         
     with tab2:
         st.subheader("Age vs Overall Rating")
@@ -172,7 +172,7 @@ elif app_mode == "🔍 Player EDA & Clubs":
                       labels={'age': 'Age', 'overall': 'Average Overall Rating'})
         fig.update_traces(line_color='#00f2fe', line_width=3, marker_size=8)
         fig.update_layout(template='plotly_dark')
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
         
     with tab3:
         st.subheader("Average Wages by Position (ST vs RW vs LW)")
@@ -184,7 +184,7 @@ elif app_mode == "🔍 Player EDA & Clubs":
                      labels={'main_pos': 'Position', 'wage_eur': 'Avg Wage (€)'},
                      color_discrete_sequence=['#ff9999', '#66b3ff', '#99ff99'])
         fig.update_layout(template='plotly_dark')
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
         
     with tab4:
         st.subheader("Club Overview & Best Starting XI")
@@ -198,7 +198,7 @@ elif app_mode == "🔍 Player EDA & Clubs":
         col_c3.metric("Total Weekly Wage Bill", f"€ {club_df['wage_eur'].sum():,}")
         
         st.markdown(f"#### Top 10 Best Rated Players at {selected_club}")
-        st.dataframe(club_df[['short_name', 'main_pos', 'overall', 'potential', 'wage_eur']].head(10), use_container_width=True)
+        st.dataframe(club_df[['short_name', 'main_pos', 'overall', 'potential', 'wage_eur']].head(10), width='stretch')
 
 elif app_mode == "⚔️ Player Comparison":
     st.markdown("<h1 class='title-gradient'>Player Face-to-Face</h1>", unsafe_allow_html=True)
@@ -248,7 +248,7 @@ elif app_mode == "⚔️ Player Comparison":
         st.subheader(f"🔴 {p2}")
         st.write(f"**Overall**: {df_p2['overall']}\n\n**Potential**: {df_p2['potential']}\n\n**Value**: €{df_p2['value_eur']:,.0f}")
     with col2:
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
 
 elif app_mode == "🕵️‍♂️ Scouting System":
     st.markdown("<h1 class='title-gradient'>Scouting Network (Wonderkids)</h1>", unsafe_allow_html=True)
@@ -275,9 +275,9 @@ elif app_mode == "🕵️‍♂️ Scouting System":
     filtered = filtered.sort_values(by='potential', ascending=False)
     
     st.success(f"Scouts found {len(filtered)} players matching your criteria!")
-    st.dataframe(filtered[['short_name', 'age', 'main_pos', 'overall', 'potential', 'club', 'value_eur', 'wage_eur']], use_container_width=True)
+    st.dataframe(filtered[['short_name', 'age', 'main_pos', 'overall', 'potential', 'club', 'value_eur', 'wage_eur']], width='stretch')
 
-elif app_mode == "brains Skills Clustering (3D)":
+elif app_mode == "🧠 Skills Clustering (3D)":
     st.markdown("<h1 class='title-gradient'>K-Means Skills Clustering</h1>", unsafe_allow_html=True)
     st.markdown("Group players based on their technical skills and physical attributes, visualized in incredible 3D.")
     
@@ -323,7 +323,7 @@ elif app_mode == "brains Skills Clustering (3D)":
                      template="plotly_dark",
                      color_discrete_sequence=px.colors.qualitative.Pastel)
     fig.update_layout(margin=dict(l=0, r=0, b=0, t=40), scene=dict(xaxis_title='PCA 1', yaxis_title='PCA 2', zaxis_title='PCA 3'))
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 elif app_mode == "🔮 Market Value Predictor":
     st.markdown("<h1 class='title-gradient'>Market Value AI Predictor</h1>", unsafe_allow_html=True)
